@@ -10,6 +10,13 @@ img {
 }
 
 /* Utilities */
+.large-text {
+    font-size: 32px;
+}
+
+.bold-text {
+    font-weight: bold;
+}
 
 .btn {
     font-size: 24px;

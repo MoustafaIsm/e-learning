@@ -5,7 +5,7 @@
 
 /* Side Navigation */
 .side-nav-wrapper {
-    width: 25%;
+    width: 20%;
     padding: 20px;
     background-color: #3A3A3A;
     height: 100vh;
@@ -52,4 +52,45 @@
 
 .logout-wrapper {
     margin-top: auto;
+}
+
+/* Pages */
+
+.page {
+    margin-left: 20%;
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* Students */
+.students-cards-wrapper {
+    width: 100%;
+    margin: 10px 0px;
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    column-gap: 5%;
+    row-gap: 5%;
+}
+
+.student-card {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0px 0px 4px 1px #2FABDC;
+}
+
+.student-profile-picture {
+    width: 100px;
+    height: 100px;
+    background-color: gainsboro;
+    border-radius: 100%;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    flex-grow: 1;
+    margin-left: 10px;
 }
