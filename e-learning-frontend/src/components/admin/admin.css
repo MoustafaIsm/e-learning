@@ -131,3 +131,12 @@
     flex-grow: 1;
     margin-left: 10px;
 }
+
+.assign-to-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.assign-to-wrapper > p {
+    margin-bottom: 10px;
+}
