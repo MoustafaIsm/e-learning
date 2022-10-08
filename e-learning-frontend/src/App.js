@@ -1,10 +1,10 @@
 import './App.css';
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from './components/Login';
-import Admin from './components/Admin';
-import Instructor from './components/Instructor';
-import Student from './components/Student';
+import Login from './components/login/Login';
+import Admin from './components/admin/Admin';
+import Instructor from './components/instructor/Instructor';
+import Student from './components/student/Student';
 
 function App() {
 
