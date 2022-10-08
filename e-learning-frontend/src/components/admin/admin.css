@@ -170,3 +170,37 @@
     font-size: 18px;
     flex-grow: 1;
 }
+
+/* Modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-content {
+    margin: 2% 5%;
+}
+
+.modal-content > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-picture-input {
+    background-color: gainsboro;
+    width: 150px;
+    height: 150px;
+    align-self: center;
+    border-radius: 100%;
+}
+
+.date-picker {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 22px;
+    border-radius: 20px;
+}
+
+.add-wrapper {
+    align-self: center;
+}

@@ -1,11 +1,12 @@
 import StudentCard from "./StudentCard"
+import AddStudentModal from "./AddStudentModal"
 
 function Students() {
     return (
         <div className="page">
             <div className="page-title">
                 <p className="large-text bold-text">Students</p>
-                <button className="bold-text btn btn-blue"> Add Student </button>
+                <AddStudentModal />
             </div>
             <div className="students-cards-wrapper">
                 <StudentCard />
