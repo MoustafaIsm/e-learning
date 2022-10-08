@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function ($collection) {
+        Schema::create('courses', function ($collection) {
             $collection->id();
+            $collection->string('code');
             $collection->string('name');
-            $collection->string('email');
-            $collection->string('password');
-            $collection->date('date_of_birth');
-            $collection->string('profile_picture_url')->default('NA');
-            $collection->integer('role_id');
+            $collection->integer('credits');
+            $collection->integer('assigned_to')->default(-1);
             $collection->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('courses');
     }
 };
