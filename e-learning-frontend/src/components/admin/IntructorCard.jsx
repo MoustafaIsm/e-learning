@@ -1,3 +1,4 @@
+import CoursesDropDownList from "./CoursesDropDownList"
 
 function IntructorCard() {
     return (
@@ -12,8 +13,7 @@ function IntructorCard() {
             </div>
             <div className="assign-to-wrapper">
                 <p>Assign</p>
-                {/* <CoursesDropDownList /> */}
-                <button className="btn btn-blue btn-save"> Save </button>
+                <CoursesDropDownList />
             </div>
         </div>
     )
