@@ -11,6 +11,11 @@ const SideNavigation = () => {
                 <li className="side-nav-btn"><Link to={'instructors'}> Instructors </Link></li>
                 <li className="side-nav-btn"><Link to={'courses'}> Courses </Link></li>
             </ul>
+            <div className="logout-wrapper">
+                <form>
+                    <input type={'submit'} value='logout' className="btn btn-outlined" />
+                </form>
+            </div>
         </div>
     )
 }
