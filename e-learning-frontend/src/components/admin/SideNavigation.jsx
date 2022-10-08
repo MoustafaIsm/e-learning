@@ -1,6 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SideNavigation = () => {
+
+    // Variables
+    const navigate = useNavigate();
+
+    // Functions
+    const logout = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        navigate('/');
+    }
+
     return (
         <div className='side-nav-wrapper'>
             <div className="logo-wrapper">
@@ -13,7 +24,11 @@ const SideNavigation = () => {
             </ul>
             <div className="logout-wrapper">
                 <form>
-                    <input type={'submit'} value='logout' className="btn btn-outlined" />
+                    <input
+                        type={'submit'}
+                        value='logout'
+                        className="btn btn-outlined"
+                        onClick={logout} />
                 </form>
             </div>
         </div>
