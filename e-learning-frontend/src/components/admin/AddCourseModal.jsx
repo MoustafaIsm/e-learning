@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 function AddCourseModal() {
+    const [code, setCode] = useState('');
+    const [name, setName] = useState('');
+    const [credits, setCredits] = useState(0);
+
     return (
         <Popup trigger={<button className="bold-text btn btn-blue"> Add Course </button>} modal>
             <div className="modal-header">
@@ -13,19 +18,26 @@ function AddCourseModal() {
                         <label> Code </label>
                         <input
                             type="text"
-                            placeholder='Code' />
+                            placeholder='Code'
+                            value={code}
+                            onChange={(e) => setCode(e.target.value)} />
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Name </label>
                         <input
                             type="text"
-                            placeholder='Name' />
+                            placeholder='Name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Credits </label>
                         <input
                             type="number"
-                            placeholder='Credits' />
+                            min={0}
+                            placeholder='Credits'
+                            value={credits}
+                            onChange={(e) => setCredits(e.target.value)} />
                     </div>
                     <div className='add-wrapper'>
                         <input type={'submit'} value='Add' className='btn btn-blue' />

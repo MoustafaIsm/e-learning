@@ -5,6 +5,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 function AddInstructorModal() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [major, setMajor] = useState('');
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
     return (
         <Popup trigger={<button className="bold-text btn btn-blue"> Add Instructor </button>} modal>
@@ -20,29 +24,40 @@ function AddInstructorModal() {
                         <label> Name </label>
                         <input
                             type="text"
-                            placeholder='Name' />
+                            placeholder='Name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Email </label>
                         <input
                             type="email"
-                            placeholder='email' />
+                            placeholder='email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Password </label>
                         <input
                             type="password"
-                            placeholder='Password' />
+                            placeholder='Password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Major </label>
                         <input
                             type="text"
-                            placeholder='Major' />
+                            placeholder='Major'
+                            value={major}
+                            onChange={(e) => setMajor(e.target.value)} />
                     </div>
                     <div className="form-input-wrapper">
                         <label> Date of birth </label>
-                        <DatePicker selected={dateOfBirth} onChange={(date) => setDateOfBirth(date)} className="date-picker" />
+                        <DatePicker
+                            selected={dateOfBirth}
+                            onChange={(date) => setDateOfBirth(date)}
+                            className="date-picker" />
                     </div>
                     <div className='add-wrapper'>
                         <input type={'submit'} value='Add' className='btn btn-blue' />
