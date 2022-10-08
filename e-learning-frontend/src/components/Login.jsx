@@ -1,7 +1,18 @@
+import {useNavigate} from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
+    const navigate = useNavigate();
+    const login = (e) => {
+        e.preventDefault();
+        localStorage.setItem('role_id', '2');
+        onLogin(localStorage.getItem('role_id'));
+        navigate('/');
+    }
+
   return (
-    <div>Login</div>
+    <form onSubmit={login}>
+        <input type={'submit'} value='login'/>
+    </form>
   )
 }
 
