@@ -55,11 +55,16 @@
 }
 
 /* Pages */
-
 .page {
     margin-left: 20%;
     padding: 30px;
     flex-grow: 1;
+}
+
+.page-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Students */
