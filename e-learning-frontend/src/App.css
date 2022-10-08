@@ -69,3 +69,7 @@ img {
     font-size: 22px;
     border-radius: 20px;
 }
+
+.hide {
+    display: none;
+}

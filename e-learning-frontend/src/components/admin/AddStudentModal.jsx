@@ -17,7 +17,15 @@ function AddStudentModal() {
             <div className="modal-content">
                 <form>
                     <div className="profile-picture-input">
-
+                        <label htmlFor="image">
+                            <img src="/camera.svg" alt="camera" className='camera-wrapper' />
+                        </label>
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            accept="image/*"
+                            class="hide" />
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Name </label>

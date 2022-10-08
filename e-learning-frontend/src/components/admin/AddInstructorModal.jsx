@@ -8,7 +8,6 @@ function AddInstructorModal() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [major, setMajor] = useState('');
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
     return (
         <Popup trigger={<button className="bold-text btn btn-blue"> Add Instructor </button>} modal>
@@ -18,7 +17,15 @@ function AddInstructorModal() {
             <div className="modal-content">
                 <form>
                     <div className="profile-picture-input">
-
+                        <label htmlFor="image">
+                            <img src="/camera.svg" alt="camera" className='camera-wrapper' />
+                        </label>
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            accept="image/*"
+                            class="hide" />
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Name </label>
@@ -43,14 +50,6 @@ function AddInstructorModal() {
                             placeholder='Password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)} />
-                    </div>
-                    <div className='form-input-wrapper'>
-                        <label> Major </label>
-                        <input
-                            type="text"
-                            placeholder='Major'
-                            value={major}
-                            onChange={(e) => setMajor(e.target.value)} />
                     </div>
                     <div className="form-input-wrapper">
                         <label> Date of birth </label>
