@@ -10,6 +10,7 @@ const Admin = () => {
         <div className='admin-wrapper'>
             <SideNavigation />
             <Routes>
+                <Route path='/' element={<Students />} />
                 <Route path='/students' element={<Students />} />
                 <Route path='/instructors' element={<Instructors />} />
                 <Route path='/courses' element={<Courses />} />
