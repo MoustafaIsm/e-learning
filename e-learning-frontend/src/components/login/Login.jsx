@@ -28,11 +28,19 @@ const Login = ({ onLogin }) => {
                 <form onSubmit={login}>
                     <div className='form-input-wrapper'>
                         <label> Email </label>
-                        <input type="email" placeholder='email' value={email}/>
+                        <input 
+                            type="email" 
+                            placeholder='email' 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}/>
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Password </label>
-                        <input type="password" placeholder='Password' value={password}/>
+                        <input 
+                            type="password" 
+                            placeholder='Password'
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <input type={'submit'} value='login' className='btn btn-blue' />
                 </form>
