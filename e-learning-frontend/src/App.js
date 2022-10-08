@@ -32,9 +32,9 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Navigate to={path} />} />
 				<Route path='/login' element={<Login onLogin={getPath} />} />
-				<Route path='/admin' element={<Admin />} />
-				<Route path='/instructor' element={<Instructor />} />
-				<Route path='/student' element={<Student />} />
+				<Route path='/admin/*' element={<Admin />} />
+				<Route path='/instructor/*' element={<Instructor />} />
+				<Route path='/student/*' element={<Student />} />
 			</Routes>
 		</BrowserRouter>
 	);
