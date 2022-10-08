@@ -1,25 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from './components/login/Login';
+import Admin from './components/admin/Admin';
+import Instructor from './components/instructor/Instructor';
+import Student from './components/student/Student';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	const [path, setPath] = useState('./login');
+
+	const getPath = (role) => {
+		switch (role) {
+			case '1':
+				setPath('/admin');
+				break;
+			case '2':
+				setPath('/instructor');
+				break;
+			case '3':
+				setPath('/student');
+				break;
+			default:
+				setPath('/login');
+				break;
+		}
+	}
+
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path='/' element={<Navigate to={path} />} />
+				<Route path='/login' element={<Login onLogin={getPath} />} />
+				<Route path='/admin/*' element={<Admin />} />
+				<Route path='/instructor/*' element={<Instructor />} />
+				<Route path='/student/*' element={<Student />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;

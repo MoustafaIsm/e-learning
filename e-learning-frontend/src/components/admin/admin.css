@@ -1,0 +1,229 @@
+.admin-wrapper {
+    display: flex;
+    background-color: #F9F9F9;
+}
+
+/* Side Navigation */
+.side-nav-wrapper {
+    width: 20%;
+    padding: 20px;
+    background-color: #3A3A3A;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-wrapper {
+    width: 100%;
+}
+
+.side-nav-btns {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-nav-btn {
+    font-size: 24px;
+    margin: 20px 0px;
+    transition-duration: 500ms;
+}
+
+.side-nav-btn > * {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #FFFFFF;
+    transition-duration: 500ms;
+    border-radius: 20px;
+}
+
+.side-nav-btn > *:hover {
+    color: #3A3A3A;
+    background-color: #FFFFFF;
+}
+
+.active-side-nav-btn > * {
+    color: #3A3A3A;
+    background-color: #FFFFFF;
+}
+
+.logout-wrapper {
+    margin-top: auto;
+}
+
+/* Pages */
+.page {
+    margin-left: 20%;
+    padding: 30px;
+    flex-grow: 1;
+}
+
+.page-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Students */
+.students-cards-wrapper {
+    width: 100%;
+    margin: 10px 0px;
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    column-gap: 5%;
+    row-gap: 5%;
+}
+
+.student-card {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0px 0px 4px 1px #2FABDC;
+}
+
+.student-profile-picture {
+    width: 100px;
+    height: 100px;
+    background-color: gainsboro;
+    border-radius: 100%;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.student-delete-btn:hover {
+    cursor: pointer;
+}
+
+/* Instructors */
+.instructors-cards-wrapper {
+    width: 100%;
+    margin: 10px 0px;
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    column-gap: 5%;
+    row-gap: 5%;
+}
+
+.instructor-card {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0px 0px 4px 1px #2FABDC;
+}
+
+.instructor-profile-picture {
+    width: 80px;
+    height: 80px;
+    background-color: gainsboro;
+    border-radius: 100%;
+}
+
+.instructor-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.assign-to-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.assign-to-wrapper > p {
+    margin-bottom: 10px;
+}
+
+/* Courses */
+.courses-cards-wrapper {
+    width: 100%;
+    margin: 10px 0px;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 5%;
+    row-gap: 5%;
+}
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0px 0px 4px 1px #2FABDC;
+}
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    flex-grow: 1;
+}
+
+/* Modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-content {
+    margin: 2% 5%;
+}
+
+.modal-content > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content input {
+    padding: 10px 15px !important;
+    font-size: 20px !important;
+}
+
+.form-input-wrapper {
+    font-size: 18px !important;
+}
+
+.profile-picture-input {
+    background-color: gainsboro;
+    width: 150px;
+    height: 150px;
+    align-self: center;
+    border-radius: 100%;
+    position: relative;
+}
+
+.camera-wrapper {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 40%;
+    left: 40%;transition-duration: 500ms;
+}
+
+.camera-wrapper:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+}
+
+.date-picker {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 22px;
+    border-radius: 20px;
+}
+
+.add-wrapper {
+    align-self: center;
+}
