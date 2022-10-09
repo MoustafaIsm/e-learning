@@ -34,14 +34,14 @@ class AuthController extends Controller {
         
         try {
             // Add user to the database
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'date_of_birth' => $request->date_of_birth,
-                'profile_picture_url' => $request->profile_picture_url,
-                'role_id' => $request->role_id,
-            ]);
+            $user = new User;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->date_of_birth = $request->date_of_birth;
+            $user->profile_picture_url = 'NA';
+            $user->role_id = $request->role_id;
+            $user->save();
             // Login user
             $token = Auth::login($user);
             $user->token = $token;
