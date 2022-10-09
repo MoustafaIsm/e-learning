@@ -14,6 +14,7 @@ Route::group(["middleware" => "auth:api"], function(){
             Route::get('/get_courses', [AdminController::class, 'getCourses']);
             Route::get('/get_user/{id}', [AdminController::class, 'getUser']);
             Route::post('/add_user', [AdminController::class, 'addUser']);
+            Route::delete('/delete_user/{id}', [AdminController::class, 'deleteUser']);
         });
     });
 
