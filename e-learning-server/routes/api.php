@@ -3,12 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
 Route::group(["middleware" => "auth:api"], function(){
 
     Route::prefix('admin')->group(function () {
         Route::group(["middleware" => ['admin']], function(){
-            Route::get('/test', [AuthController::class, 'test']);
+            Route::get('/get_students', [AdminController::class, 'getStudents']);
         });
     });
 
