@@ -47,5 +47,22 @@ class AdminController extends Controller {
             'user' => $user,
         ]);
     }
+
+    public function addUser (Request $request) {
+        $user = new User;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->date_of_birth = $request->date_of_birth;
+            $user->profile_picture_url = 'NA';
+            $user->role_id = $request->role_id;
+            $user->save();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'User created successfully',
+                'user' => $user,
+            ]);
+    }
     
 }
