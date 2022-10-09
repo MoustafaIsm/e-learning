@@ -18,7 +18,7 @@ return new class extends Migration
             $collection->string('code');
             $collection->string('name');
             $collection->integer('credits');
-            $collection->integer('assigned_to')->default(-1);
+            $collection->string('assigned_to')->default(-1);
             $collection->timestamps();
         });
     }

@@ -11,7 +11,8 @@ Route::group(["middleware" => "auth:api"], function(){
         Route::group(["middleware" => ['admin']], function(){
             Route::get('/get_students', [AdminController::class, 'getStudents']);
             Route::get('/get_instructors', [AdminController::class, 'getInstructors']);
-
+            Route::get('/get_courses', [AdminController::class, 'getCourses']);
+            Route::get('/get_user/{id}', [AdminController::class, 'getUser']);
         });
     });
 
