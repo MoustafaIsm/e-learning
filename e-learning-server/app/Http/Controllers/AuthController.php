@@ -62,8 +62,5 @@ class AuthController extends Controller {
         return "You are unauthorized.";
     }
 
-    public function test() {
-        return 'authorized';
-    }
 }
 
