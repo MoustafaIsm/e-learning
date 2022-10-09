@@ -1,5 +1,12 @@
 
 function StudentCard({ student, onDelete }) {
+
+    const token = localStorage.getItem('token');
+
+    const deleteStudent = () => {
+        onDelete(student._id, token);
+    }
+
     return (
         <div className="student-card">
             <div className="student-profile-picture">
@@ -11,7 +18,7 @@ function StudentCard({ student, onDelete }) {
                 <p>{student.date_of_birth}</p>
             </div>
             <div className="student-delete-btn">
-                <img src="/delete.svg" alt="delete" onClick={onDelete(student._id)} />
+                <img src="/delete.svg" alt="delete" onClick={deleteStudent} />
             </div>
         </div>
     )
