@@ -103,7 +103,9 @@ class AdminController extends Controller {
 
         if ($insert) {
             return response()->json([
-                'status' => 'success'
+                'status' => 'success',
+                'message' => 'created course successfully',
+                'course' => $course
             ]);
         }
         return response()->json([

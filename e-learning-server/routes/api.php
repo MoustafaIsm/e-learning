@@ -9,13 +9,19 @@ Route::group(["middleware" => "auth:api"], function(){
 
     Route::prefix('admin')->group(function () {
         Route::group(["middleware" => ['admin']], function(){
-            Route::get('/get_users/{type}', [AdminController::class, 'getUsers']);
-            Route::get('/get_user/{id}', [AdminController::class, 'getUser']);
-            Route::post('/add_user', [AdminController::class, 'addUser']);
-            Route::delete('/delete_user/{id}', [AdminController::class, 'deleteUser']);
-            Route::get('/get_courses', [AdminController::class, 'getCourses']);
-            Route::put('/update_course/{course_id}/{instructor_id}', [AdminController::class, 'updateCourse']);
-            Route::post('/add_course', [AdminController::class, 'addCourse']);
+            
+            Route::prefix('user')->group(function () {
+                Route::get('/get_users/{type}', [AdminController::class, 'getUsers']);
+                Route::get('/get_user/{id}', [AdminController::class, 'getUser']);
+                Route::post('/add_user', [AdminController::class, 'addUser']);
+                Route::delete('/delete_user/{id}', [AdminController::class, 'deleteUser']);
+            });
+            Route::prefix('course')->group(function () {
+                Route::get('/get_courses', [AdminController::class, 'getCourses']);
+                Route::put('/update_course/{course_id}/{instructor_id}', [AdminController::class, 'updateCourse']);
+                Route::post('/add_course', [AdminController::class, 'addCourse']);
+            });
+            
         });
     });
 
