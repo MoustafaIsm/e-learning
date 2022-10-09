@@ -1,7 +1,7 @@
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
-function CoursesDropDownList() {
+function CoursesDropDownList({ token }) {
     const options = ['one', 'two', 'three'];
     const defaultOption = options[0];
     return (
