@@ -2,18 +2,43 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::group(["middleware" => "auth:api"], function(){
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::prefix('admin')->group(function () {
+        Route::group(["middleware" => ['admin']], function(){
+            
+            Route::prefix('user')->group(function () {
+                Route::get('/get_users/{type}', [AdminController::class, 'getUsers']);
+                Route::get('/get_user/{id}', [AdminController::class, 'getUser']);
+                Route::post('/add_user', [AdminController::class, 'addUser']);
+                Route::delete('/delete_user/{id}', [AdminController::class, 'deleteUser']);
+            });
+            Route::prefix('course')->group(function () {
+                Route::get('/get_courses', [AdminController::class, 'getCourses']);
+                Route::put('/update_course/{course_id}/{instructor_id}', [AdminController::class, 'updateCourse']);
+                Route::post('/add_course', [AdminController::class, 'addCourse']);
+            });
+            
+        });
+    });
+
+    Route::prefix('instructor')->group(function () {
+
+    });
+
+    Route::prefix('student')->group(function () {
+
+    });
+
+});
+
+Route::prefix('auth')->group(function () {
+    
+    Route::post("/login", [AuthController::class, "login"]);
+    Route::post("/register", [AuthController::class, "register"]);
+    Route::get("/not_auth", [AuthController::class, 'notAuth'])->name('not-auth');
+
 });

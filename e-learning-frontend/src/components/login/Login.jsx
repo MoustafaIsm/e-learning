@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 
 const Login = ({ onLogin }) => {
     const navigate = useNavigate();
 
     // useStates
-    const [email, setEmail] = useState(''); 
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const login = (e) => {
@@ -19,34 +19,34 @@ const Login = ({ onLogin }) => {
         // TODO: reset the user inputs
     }
 
-  return (
+    return (
         <div className='login-wrapper'>
             <div className='login-logo-wrapper'>
-                <img src='/logo.jpg' alt='logo'/>
+                <img src='/logo.jpg' alt='logo' />
             </div>
             <div className='login-form-wrapper'>
                 <form onSubmit={login}>
                     <div className='form-input-wrapper'>
                         <label> Email </label>
-                        <input 
-                            type="email" 
-                            placeholder='email' 
+                        <input
+                            type="email"
+                            placeholder='email'
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}/>
+                            onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Password </label>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             placeholder='Password'
-                            value={password} 
-                            onChange={(e) => setPassword(e.target.value)}/>
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <input type={'submit'} value='login' className='btn btn-blue' />
                 </form>
             </div>
         </div>
-  )
+    )
 }
 
 export default Login
