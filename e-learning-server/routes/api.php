@@ -14,6 +14,7 @@ Route::group(["middleware" => "auth:api"], function(){
             Route::post('/add_user', [AdminController::class, 'addUser']);
             Route::delete('/delete_user/{id}', [AdminController::class, 'deleteUser']);
             Route::get('/get_courses', [AdminController::class, 'getCourses']);
+            Route::put('/update_course/{course_id}/{instructor_id}', [AdminController::class, 'updateCourse']);
         });
     });
 

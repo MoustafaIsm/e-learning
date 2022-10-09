@@ -77,5 +77,20 @@ class AdminController extends Controller {
             'status' => 'failed'
         ], 401);
     }
+
+    public function updateCourse ($courseId, $instructorId) {
+        $course = Course::where('_id', $courseId)->first();
+        $course->assigned_to = $instructorId;
+        $update = $course->save();
+
+        if ($update) {
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }
+        return response()->json([
+            'status' => 'failed'
+        ], 401);
+    }
     
 }
