@@ -4,8 +4,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+Route::group(["middleware" => "auth:api"], function(){
 
+    Route::prefix('admin')->group(function () {
 
+    });
+
+    Route::prefix('instructor')->group(function () {
+
+    });
+
+    Route::prefix('student')->group(function () {
+
+    });
+
+});
 
 Route::prefix('auth')->group(function () {
     
