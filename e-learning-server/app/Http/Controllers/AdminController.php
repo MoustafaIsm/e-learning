@@ -8,17 +8,16 @@ use App\Models\Course;
 
 class AdminController extends Controller {
 
-    public function getStudents() {
-        $students = User::where('role_id', '=', 3)->get();
+    public function getUsers($type) {
+        if ($type == 'students') {
+            $students = User::where('role_id', '=', 3)->get();
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Got students successfully',
-            'students' => $students,
-        ]);
-    }
-
-    public function getInstructors() {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Got students successfully',
+                'students' => $students,
+            ]);
+        }
         $instructors = User::where('role_id', '=', 2)->get();
 
         return response()->json([
@@ -26,6 +25,7 @@ class AdminController extends Controller {
             'message' => 'Got instructors successfully',
             'instructors' => $instructors,
         ]);
+
     }
 
     public function getCourses() {

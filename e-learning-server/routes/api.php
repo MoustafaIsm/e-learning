@@ -9,12 +9,11 @@ Route::group(["middleware" => "auth:api"], function(){
 
     Route::prefix('admin')->group(function () {
         Route::group(["middleware" => ['admin']], function(){
-            Route::get('/get_students', [AdminController::class, 'getStudents']);
-            Route::get('/get_instructors', [AdminController::class, 'getInstructors']);
-            Route::get('/get_courses', [AdminController::class, 'getCourses']);
+            Route::get('/get_users/{type}', [AdminController::class, 'getUsers']);
             Route::get('/get_user/{id}', [AdminController::class, 'getUser']);
             Route::post('/add_user', [AdminController::class, 'addUser']);
             Route::delete('/delete_user/{id}', [AdminController::class, 'deleteUser']);
+            Route::get('/get_courses', [AdminController::class, 'getCourses']);
         });
     });
 
