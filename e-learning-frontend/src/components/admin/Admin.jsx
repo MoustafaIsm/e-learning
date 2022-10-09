@@ -14,7 +14,7 @@ const Admin = () => {
         <div className='admin-wrapper'>
             <SideNavigation />
             <Routes>
-                <Route path='/' element={<Students />} />
+                <Route path='/' element={<Students url={url} token={token} />} />
                 <Route path='/students' element={<Students url={url} token={token} />} />
                 <Route path='/instructors' element={<Instructors url={url} token={token} />} />
                 <Route path='/courses' element={<Courses url={url} token={token} />} />

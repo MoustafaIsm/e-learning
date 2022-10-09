@@ -9,7 +9,6 @@ function Students({ url, token }) {
 
     const [students, setStudents] = useState([]);
 
-
     useEffect(() => {
         const getStudents = async () => {
             const studentsData = await fetchStudents(url, token);
@@ -30,6 +29,7 @@ function Students({ url, token }) {
                         return (
                             <StudentCard
                                 key={index}
+                                url={url}
                                 token={token}
                                 student={student}
                                 onDelete={deleteStudent}
