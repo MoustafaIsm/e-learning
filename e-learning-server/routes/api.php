@@ -10,6 +10,8 @@ Route::group(["middleware" => "auth:api"], function(){
     Route::prefix('admin')->group(function () {
         Route::group(["middleware" => ['admin']], function(){
             Route::get('/get_students', [AdminController::class, 'getStudents']);
+            Route::get('/get_instructors', [AdminController::class, 'getInstructors']);
+
         });
     });
 

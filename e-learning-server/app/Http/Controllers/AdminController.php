@@ -16,5 +16,15 @@ class AdminController extends Controller {
             'students' => $students,
         ]);
     }
+
+    public function getInstructors() {
+        $instructors = User::where('role_id', '=', 2)->get();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Got instructors successfully',
+            'instructors' => $instructors,
+        ]);
+    }
     
 }
