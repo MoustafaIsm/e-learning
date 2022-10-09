@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
+import { loginUser } from '../../hooks/login';
 
 const Login = ({ onLogin }) => {
     const navigate = useNavigate();
@@ -8,15 +9,34 @@ const Login = ({ onLogin }) => {
     // useStates
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const login = (e) => {
+    // Functions
+    const login = async (e) => {
         e.preventDefault();
-        localStorage.setItem('role_id', '1');
-        onLogin(localStorage.getItem('role_id'));
-        navigate('/');
-        // TODO: Add a function to get the user info
-        // TODO: Add a function that saves user data into local storage
-        // TODO: reset the user inputs
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('password', password);
+        const data = await loginUser('http://127.0.0.1:8000/api', formData);
+        if (data.status === 'success') {
+            saveUserData(data.user);
+            onLogin(localStorage.getItem('role_id'));
+            navigate('/');
+        } else {
+            setError(data.message);
+        }
+        // TODO: fix onLogin function
+    }
+
+    const saveUserData = (user) => {
+        localStorage.setItem('id', user._id);
+        localStorage.setItem('name', user.name);
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('token', user.token);
+        localStorage.setItem('date_of_birth', user.date_of_birth);
+        localStorage.setItem('profile_picture_url', user.profile_picture_url);
+        localStorage.setItem('role_id', user.role_id);
+
     }
 
     return (
@@ -42,6 +62,7 @@ const Login = ({ onLogin }) => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)} />
                     </div>
+                    <p>{error}</p>
                     <input type={'submit'} value='login' className='btn btn-blue' />
                 </form>
             </div>
