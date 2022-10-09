@@ -1,6 +1,6 @@
 import CoursesDropDownList from "./CoursesDropDownList"
 
-function IntructorCard({ instructor, coursesNames }) {
+function IntructorCard({ url, token, instructor, coursesNames }) {
     return (
         <div className="instructor-card">
             <div className="instructor-profile-picture">
@@ -13,7 +13,12 @@ function IntructorCard({ instructor, coursesNames }) {
             </div>
             <div className="assign-to-wrapper">
                 <p>Assign</p>
-                <CoursesDropDownList coursesNames={coursesNames} />
+                <CoursesDropDownList
+                    url={url}
+                    token={token}
+                    coursesNames={coursesNames}
+                    instructorId={instructor._id}
+                />
             </div>
         </div>
     )
