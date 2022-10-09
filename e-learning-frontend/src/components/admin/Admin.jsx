@@ -6,14 +6,18 @@ import Instructors from './Instructors';
 import Courses from './Courses';
 
 const Admin = () => {
+
+    const url = 'http://127.0.0.1:8000/api/admin';
+    const token = localStorage.getItem('token');
+
     return (
         <div className='admin-wrapper'>
             <SideNavigation />
             <Routes>
                 <Route path='/' element={<Students />} />
-                <Route path='/students' element={<Students />} />
-                <Route path='/instructors' element={<Instructors />} />
-                <Route path='/courses' element={<Courses />} />
+                <Route path='/students' element={<Students url={url} token={token} />} />
+                <Route path='/instructors' element={<Instructors url={url} token={token} />} />
+                <Route path='/courses' element={<Courses url={url} token={token} />} />
             </Routes>
         </div>
     )

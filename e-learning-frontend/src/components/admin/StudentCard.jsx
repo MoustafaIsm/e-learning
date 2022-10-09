@@ -1,7 +1,5 @@
 
-function StudentCard({ student, onDelete }) {
-
-    const token = localStorage.getItem('token');
+function StudentCard({ token, student, onDelete }) {
 
     const deleteStudent = () => {
         onDelete(student._id, token);

@@ -4,10 +4,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { fetchInstructors } from '../../hooks/admin/fetchInstructors';
 
-function Instructors() {
+function Instructors({ url, token }) {
 
-    const url = 'http://127.0.0.1:8000/api/admin';
-    const token = localStorage.getItem('token');
     const [instructors, setInstructors] = useState([]);
 
     useEffect(() => {
@@ -16,7 +14,7 @@ function Instructors() {
             setInstructors(instructorsData.instructors);
         }
         getInstructors();
-    }, []);
+    }, [token, url]);
 
     return (
         <div className="page">
@@ -30,6 +28,7 @@ function Instructors() {
                         return (
                             <InstructorCard
                                 key={index}
+                                token={token}
                                 instructor={instructor}
                             />
                         );

@@ -5,11 +5,10 @@ import { useEffect } from "react";
 import { fetchStudents } from '../../hooks/admin/fetchStudents';
 import { deleteStudent } from '../../hooks/admin/deleteStudent';
 
-function Students() {
+function Students({ url, token }) {
 
-    const url = 'http://127.0.0.1:8000/api/admin';
-    const token = localStorage.getItem('token');
     const [students, setStudents] = useState([]);
+
 
     useEffect(() => {
         const getStudents = async () => {
@@ -31,6 +30,7 @@ function Students() {
                         return (
                             <StudentCard
                                 key={index}
+                                token={token}
                                 student={student}
                                 onDelete={deleteStudent}
                             />
