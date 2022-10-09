@@ -1,7 +1,23 @@
 import InstructorCard from './IntructorCard';
 import AddInstructorModal from './AddInstructorModal';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { fetchInstructors } from '../../hooks/admin/fetchInstructors';
 
 function Instructors() {
+
+    const url = 'http://127.0.0.1:8000/api/admin';
+    const token = localStorage.getItem('token');
+    const [instructors, setInstructors] = useState([]);
+
+    useEffect(() => {
+        const getInstructors = async () => {
+            const instructorsData = await fetchInstructors(url, token);
+            setInstructors(instructorsData.instructors);
+        }
+        getInstructors();
+    }, []);
+
     return (
         <div className="page">
             <div className="page-title">
@@ -9,14 +25,16 @@ function Instructors() {
                 <AddInstructorModal />
             </div>
             <div className="instructors-cards-wrapper">
-                <InstructorCard />
-                <InstructorCard />
-                <InstructorCard />
-                <InstructorCard />
-                <InstructorCard />
-                <InstructorCard />
-                <InstructorCard />
-                <InstructorCard />
+                {
+                    instructors.map((instructor, index) => {
+                        return (
+                            <InstructorCard
+                                key={index}
+                                instructor={instructor}
+                            />
+                        );
+                    })
+                }
             </div>
         </div>
     )
