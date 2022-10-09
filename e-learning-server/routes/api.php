@@ -7,7 +7,9 @@ use App\Http\Controllers\AuthController;
 Route::group(["middleware" => "auth:api"], function(){
 
     Route::prefix('admin')->group(function () {
-
+        // Route::group(["middleware" => "admin:auth"], function(){
+            Route::get('/test', [AuthController::class, 'test']);
+        // });
     });
 
     Route::prefix('instructor')->group(function () {
