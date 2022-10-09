@@ -28,16 +28,6 @@ class AdminController extends Controller {
 
     }
 
-    public function getCourses() {
-        $courses = Course::all();
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Got courses successfully',
-            'courses' => $courses,
-        ]);
-    }
-
     public function getUser($id) {
         $user = User::where('_id', $id)->get();
 
@@ -78,12 +68,40 @@ class AdminController extends Controller {
         ], 401);
     }
 
+    public function getCourses() {
+        $courses = Course::all();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Got courses successfully',
+            'courses' => $courses,
+        ]);
+    }
+
     public function updateCourse ($courseId, $instructorId) {
         $course = Course::where('_id', $courseId)->first();
         $course->assigned_to = $instructorId;
         $update = $course->save();
 
         if ($update) {
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }
+        return response()->json([
+            'status' => 'failed'
+        ], 401);
+    }
+
+    public function addCourse (Request $request) {
+        $course = new Course;
+        $course->code = $request->code;
+        $course->name = $request->name;
+        $course->credits = $request->credits;
+        $course->assigned_to = -1;
+        $insert = $course->save();
+
+        if ($insert) {
             return response()->json([
                 'status' => 'success'
             ]);
