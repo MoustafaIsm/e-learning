@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\user;
 use App\Models\Course;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller {
 
     public function getUsers($type) {
         if ($type == 'students') {
-            $students = User::where('role_id', '=', 3)->get();
+            $students = User::where('role_id', '=', '3')->get();
 
             return response()->json([
                 'status' => 'success',
@@ -18,7 +19,7 @@ class AdminController extends Controller {
                 'students' => $students,
             ]);
         }
-        $instructors = User::where('role_id', '=', 2)->get();
+        $instructors = User::where('role_id', '=', '2')->get();
 
         return response()->json([
             'status' => 'success',
@@ -78,14 +79,15 @@ class AdminController extends Controller {
         ]);
     }
 
-    public function updateCourse ($courseId, $instructorId) {
-        $course = Course::where('_id', $courseId)->first();
-        $course->assigned_to = $instructorId;
+    public function updateCourse (Request $request) {
+        $course = Course::where('code', $request->code)->first();
+        $course->assigned_to = $request->instructor_id;
         $update = $course->save();
 
         if ($update) {
             return response()->json([
-                'status' => 'success'
+                'status' => 'success',
+                'course' => $course
             ]);
         }
         return response()->json([

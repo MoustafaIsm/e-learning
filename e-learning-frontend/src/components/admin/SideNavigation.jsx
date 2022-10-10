@@ -9,7 +9,7 @@ const SideNavigation = () => {
     const logout = (e) => {
         e.preventDefault();
         localStorage.clear();
-        navigate('/');
+        navigate('/login');
     }
 
     return (

@@ -1,14 +1,24 @@
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import { updateCourse } from '../../hooks/admin/updateCourse';
 
-function CoursesDropDownList() {
-    const options = ['one', 'two', 'three'];
-    const defaultOption = options[0];
+function CoursesDropDownList({ url, coursesNames, instructorId }) {
+
+    const token = localStorage.getItem('token');
+    const defaultOption = 'Select';
+
+    const update = async (e) => {
+        const formData = new FormData();
+        formData.append('code', e.value);
+        formData.append('instructor_id', instructorId);
+        updateCourse(url, token, formData);
+    }
+
     return (
         <div>
             <Dropdown
-                options={options}
-                onChange={(e) => { console.log(e.value) }}
+                options={coursesNames}
+                onChange={update}
                 value={defaultOption}
                 placeholder="Select a course" />
         </div>
