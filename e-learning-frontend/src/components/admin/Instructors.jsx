@@ -4,11 +4,17 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { fetchInstructors } from '../../hooks/admin/fetchInstructors';
 import { fetchCourses } from '../../hooks/admin/fetchCourses';
+import { addUser } from '../../hooks/admin/addUser';
 
 function Instructors({ url, token }) {
 
     const [instructors, setInstructors] = useState([]);
     const [coursesNames, setCoursesNames] = useState([]);
+
+    const addInstructor = async (url, token, instructor) => {
+        const data = await addUser(url, token, instructor);
+        setInstructors([...instructors, data.user]);
+    }
 
     useEffect(() => {
         const getInstructors = async () => {
@@ -32,7 +38,11 @@ function Instructors({ url, token }) {
         <div className="page">
             <div className="page-title">
                 <p className="large-text bold-text">Instructors</p>
-                <AddInstructorModal />
+                <AddInstructorModal
+                    url={url}
+                    token={token}
+                    onAdd={addInstructor}
+                />
             </div>
             <div className="instructors-cards-wrapper">
                 {

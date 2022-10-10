@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import DatePicker from "react-datepicker";
+import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
 
 function AddStudentModal({ url, token, onAdd }) {
@@ -75,7 +76,7 @@ function AddStudentModal({ url, token, onAdd }) {
                         <label> Date of birth </label>
                         <DatePicker
                             selected={dateOfBirth}
-                            onChange={(date) => setDateOfBirth(date)}
+                            onChange={(date) => setDateOfBirth(moment(date).format('DD-MM-YYYY'))}
                             className="date-picker" />
                     </div>
                     <div className='add-wrapper'>
