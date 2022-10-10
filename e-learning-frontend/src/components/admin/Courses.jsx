@@ -5,11 +5,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { addCourse } from '../../hooks/admin/addCourse';
 
-function Courses({ url, token }) {
+function Courses({ url }) {
 
+    const token = localStorage.getItem('token');
     const [courses, setCourses] = useState([]);
 
-    const addNewCourse = async (url, token, course) => {
+    const addNewCourse = async (course) => {
         const data = await addCourse(url, token, course);
         setCourses([...courses, data.course]);
     }
@@ -26,11 +27,7 @@ function Courses({ url, token }) {
         <div className="page">
             <div className="page-title">
                 <p className="large-text bold-text">Courses</p>
-                <AddCouseModal
-                    url={url}
-                    token={token}
-                    onAdd={addNewCourse}
-                />
+                <AddCouseModal onAdd={addNewCourse} />
             </div>
             <div className="courses-cards-wrapper">
                 {
@@ -39,7 +36,6 @@ function Courses({ url, token }) {
                             <CourseCard
                                 key={index}
                                 url={url}
-                                token={token}
                                 course={course}
                             />
                         );

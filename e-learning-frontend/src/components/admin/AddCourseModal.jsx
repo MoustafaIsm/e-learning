@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-function AddCourseModal({ url, token, onAdd }) {
+function AddCourseModal({ onAdd }) {
     const [code, setCode] = useState('');
     const [name, setName] = useState('');
     const [credits, setCredits] = useState(0);
@@ -14,7 +14,7 @@ function AddCourseModal({ url, token, onAdd }) {
         formData.append('code', code);
         formData.append('name', name);
         formData.append('credits', credits);
-        onAdd(url, token, formData);
+        onAdd(formData);
     }
 
     const resetInputs = () => {

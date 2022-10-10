@@ -6,12 +6,13 @@ import { fetchInstructors } from '../../hooks/admin/fetchInstructors';
 import { fetchCourses } from '../../hooks/admin/fetchCourses';
 import { addUser } from '../../hooks/admin/addUser';
 
-function Instructors({ url, token }) {
+function Instructors({ url }) {
 
+    const token = localStorage.getItem('token');
     const [instructors, setInstructors] = useState([]);
     const [coursesNames, setCoursesNames] = useState([]);
 
-    const addInstructor = async (url, token, instructor) => {
+    const addInstructor = async (instructor) => {
         const data = await addUser(url, token, instructor);
         setInstructors([...instructors, data.user]);
     }
@@ -38,11 +39,7 @@ function Instructors({ url, token }) {
         <div className="page">
             <div className="page-title">
                 <p className="large-text bold-text">Instructors</p>
-                <AddInstructorModal
-                    url={url}
-                    token={token}
-                    onAdd={addInstructor}
-                />
+                <AddInstructorModal onAdd={addInstructor} />
             </div>
             <div className="instructors-cards-wrapper">
                 {
@@ -51,7 +48,6 @@ function Instructors({ url, token }) {
                             <InstructorCard
                                 key={index}
                                 url={url}
-                                token={token}
                                 instructor={instructor}
                                 coursesNames={coursesNames}
                             />

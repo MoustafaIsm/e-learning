@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { fetchUser } from '../../hooks/admin/fetchUser';
 
-function CourseCard({ url, token, course }) {
+function CourseCard({ url, course }) {
 
+    const token = localStorage.getItem('token');
     const [assigned, setAssigned] = useState('');
 
     useEffect(() => {

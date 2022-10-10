@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
 
-function AddInstructorModal({ url, token, onAdd }) {
+function AddInstructorModal({ onAdd }) {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ function AddInstructorModal({ url, token, onAdd }) {
         formData.append('password', password);
         formData.append('date_of_birth', dateOfBirth);
         formData.append('role_id', 2);
-        onAdd(url, token, formData);
+        onAdd(formData);
     }
 
     const resetInputs = () => {

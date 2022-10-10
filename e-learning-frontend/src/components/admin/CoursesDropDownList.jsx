@@ -2,8 +2,9 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { updateCourse } from '../../hooks/admin/updateCourse';
 
-function CoursesDropDownList({ url, token, coursesNames, instructorId }) {
+function CoursesDropDownList({ url, coursesNames, instructorId }) {
 
+    const token = localStorage.getItem('token');
     const defaultOption = 'Select';
 
     const update = async (e) => {

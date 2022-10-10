@@ -6,11 +6,12 @@ import { fetchStudents } from '../../hooks/admin/fetchStudents';
 import { deleteStudent } from '../../hooks/admin/deleteStudent';
 import { addUser } from '../../hooks/admin/addUser';
 
-function Students({ url, token }) {
+function Students({ url }) {
 
+    const token = localStorage.getItem('token');
     const [students, setStudents] = useState([]);
 
-    const addStudent = async (url, token, student) => {
+    const addStudent = async (student) => {
         const data = await addUser(url, token, student);
         setStudents([...students, data.user]);
     }
@@ -32,11 +33,7 @@ function Students({ url, token }) {
         <div className="page">
             <div className="page-title">
                 <p className="large-text bold-text">Students</p>
-                <AddStudentModal
-                    url={url}
-                    token={token}
-                    onAdd={addStudent}
-                />
+                <AddStudentModal onAdd={addStudent} />
             </div>
             <div className="students-cards-wrapper">
                 {
