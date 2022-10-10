@@ -4,18 +4,38 @@ import 'reactjs-popup/dist/index.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function AddStudentModal() {
+function AddStudentModal({ url, token, onAdd }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
+
+    const addStudent = (e) => {
+        e.preventDefault();
+        resetInputs();
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('password', password);
+        formData.append('date_of_birth', dateOfBirth);
+        formData.append('role_id', 3);
+        onAdd(url, token, formData);
+    }
+
+    const resetInputs = () => {
+        setEmail('');
+        setName('');
+        setPassword('');
+        setDateOfBirth(new Date());
+    }
+
     return (
         <Popup trigger={<button className="bold-text btn btn-blue"> Add Student </button>} modal>
             <div className="modal-header">
                 <p className="bold-text large-text"> Add Student </p>
             </div>
             <div className="modal-content">
-                <form>
+                <form onSubmit={addStudent}>
                     <div className="profile-picture-input">
                         <label htmlFor="image">
                             <img src="/camera.svg" alt="camera" className='camera-wrapper' />
@@ -25,7 +45,7 @@ function AddStudentModal() {
                             id="image"
                             name="image"
                             accept="image/*"
-                            class="hide" />
+                            className="hide" />
                     </div>
                     <div className='form-input-wrapper'>
                         <label> Name </label>

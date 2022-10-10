@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\user;
 use App\Models\Course;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller {
 
