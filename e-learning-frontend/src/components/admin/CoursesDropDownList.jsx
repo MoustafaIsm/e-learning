@@ -7,7 +7,10 @@ function CoursesDropDownList({ url, token, coursesNames, instructorId }) {
     const defaultOption = 'Select';
 
     const update = async (e) => {
-        updateCourse(url, token, e.value, instructorId);
+        const formData = new FormData();
+        formData.append('code', e.value);
+        formData.append('instructor_id', instructorId);
+        updateCourse(url, token, formData);
     }
 
     return (

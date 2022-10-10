@@ -79,14 +79,15 @@ class AdminController extends Controller {
         ]);
     }
 
-    public function updateCourse ($courseCode, $instructorId) {
-        $course = Course::where('code', $courseCode)->first();
-        $course->assigned_to = $instructorId;
+    public function updateCourse (Request $request) {
+        $course = Course::where('code', $request->code)->first();
+        $course->assigned_to = $request->instructor_id;
         $update = $course->save();
 
         if ($update) {
             return response()->json([
-                'status' => 'success'
+                'status' => 'success',
+                'course' => $course
             ]);
         }
         return response()->json([
