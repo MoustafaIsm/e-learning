@@ -15,6 +15,11 @@ function Students({ url, token }) {
         setStudents([...students, data.user]);
     }
 
+    const removeStudent = async (id) => {
+        deleteStudent(url, token, id);
+        setStudents(students.filter((student) => student._id !== id));
+    }
+
     useEffect(() => {
         const getStudents = async () => {
             const studentsData = await fetchStudents(url, token);
@@ -39,10 +44,8 @@ function Students({ url, token }) {
                         return (
                             <StudentCard
                                 key={index}
-                                url={url}
-                                token={token}
                                 student={student}
-                                onDelete={deleteStudent}
+                                onDelete={removeStudent}
                             />
                         );
                     })

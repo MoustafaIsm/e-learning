@@ -1,8 +1,8 @@
 
-function StudentCard({ url, token, student, onDelete }) {
+function StudentCard({ student, onDelete }) {
 
     const deleteStudent = () => {
-        onDelete(url, student._id, token);
+        onDelete(student._id);
     }
 
     return (

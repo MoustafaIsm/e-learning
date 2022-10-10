@@ -11,7 +11,7 @@ class AdminController extends Controller {
 
     public function getUsers($type) {
         if ($type == 'students') {
-            $students = User::where('role_id', '=', 3)->get();
+            $students = User::where('role_id', '=', '3')->get();
 
             return response()->json([
                 'status' => 'success',
@@ -19,7 +19,7 @@ class AdminController extends Controller {
                 'students' => $students,
             ]);
         }
-        $instructors = User::where('role_id', '=', 2)->get();
+        $instructors = User::where('role_id', '=', '2')->get();
 
         return response()->json([
             'status' => 'success',
