@@ -25,7 +25,6 @@ const Login = ({ onLogin }) => {
         } else {
             setError(data.message);
         }
-        // TODO: fix onLogin function
     }
 
     const saveUserData = (user) => {
